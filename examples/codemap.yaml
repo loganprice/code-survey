@@ -1,0 +1,630 @@
+$schema: https://raw.githubusercontent.com/username/codemap/main/schema.json
+externalImports:
+  web-tree-sitter:
+    - src/parsers/csharp.ts
+    - src/parsers/go.ts
+    - src/parsers/java.ts
+    - src/parsers/python.ts
+    - src/parsers/typescript.ts
+  yaml:
+    - src/writer.ts
+    - tests/integration.test.ts
+    - tests/writer.test.ts
+files:
+  src/index.ts:
+    exports:
+      - location: Ln 9-15
+        name: CodemapOptions
+        type: type
+      - location: Ln 17-146
+        name: createCodemap
+        type: function
+    hash: bd5e7aad51778a8674957951c1085174ad30ba41b03e376cc0a1277b2f98d96c
+    imports:
+      - source: ./parser.ts
+        symbols:
+          - CodebaseParser
+          - parsePackageDependencies
+      - source: ./resolver.ts
+        symbols:
+          - resolveImports
+      - source: ./scanner.ts
+        symbols:
+          - scanDirectory
+      - source: ./types.ts
+        symbols:
+          - CodemapSchema
+          - FileEntry
+          - NamespaceEntry
+      - source: ./writer.ts
+        symbols:
+          - generateDeterministicJson
+          - generateDeterministicYaml
+      - source: node:fs
+        symbols:
+          - fs
+      - source: node:path
+        symbols:
+          - path
+    symbols: []
+  src/parser.ts:
+    exports:
+      - location: Ln 148-187
+        name: CodebaseParser
+        type: class
+      - location: Ln 13-144
+        name: parsePackageDependencies
+        type: function
+    hash: 5cc5af6c3a80f6268ea0ac080196ca8de47eff3c9c15b2845f67fb58f440bd0d
+    imports:
+      - source: ./parsers/csharp.ts
+        symbols:
+          - CSharpParser
+      - source: ./parsers/go.ts
+        symbols:
+          - GoParser
+      - source: ./parsers/java.ts
+        symbols:
+          - JavaParser
+      - source: ./parsers/python.ts
+        symbols:
+          - PythonParser
+      - source: ./parsers/typescript.ts
+        symbols:
+          - TypeScriptParser
+      - source: ./types.ts
+        symbols:
+          - LanguageParser
+          - PackageDependencies
+          - ParseOptions
+          - ParseResult
+      - source: ./utils/wasm-loader.ts
+        symbols:
+          - getWasmPath
+      - source: node:fs
+        symbols:
+          - fs
+      - source: node:path
+        symbols:
+          - path
+    symbols: []
+  src/parsers/csharp.ts:
+    exports:
+      - location: Ln 19-111
+        name: CSharpParser
+        type: class
+    hash: 9ebc2a9458aec3561bd2bfd8a0c9c0669ebbc354d3e95c917fee8036d8f6cc13
+    imports:
+      - source: ../types.ts
+        symbols:
+          - ImportEntry
+          - LanguageParser
+          - ParseOptions
+          - ParseResult
+          - SymbolEntry
+      - source: ../types.ts
+        symbols:
+          - formatLocation
+      - source: web-tree-sitter
+        symbols:
+          - Parser
+    symbols:
+      - location: Ln 7-12
+        name: ensureParserInit
+        type: function
+      - location: Ln 14-17
+        name: isCSharpPublic
+        type: function
+      - location: Ln 5
+        name: isParserInitialized
+        type: variable
+  src/parsers/go.ts:
+    exports:
+      - location: Ln 21-124
+        name: GoParser
+        type: class
+    hash: 07c2228c55bbd5288a464e7ab78b5e4920b9b90c67ecf2fbaa87581ef96b8d15
+    imports:
+      - source: ../types.ts
+        symbols:
+          - ImportEntry
+          - LanguageParser
+          - ParseOptions
+          - ParseResult
+          - SymbolEntry
+      - source: ../types.ts
+        symbols:
+          - formatLocation
+      - source: web-tree-sitter
+        symbols:
+          - Parser
+    symbols:
+      - location: Ln 7-12
+        name: ensureParserInit
+        type: function
+      - location: Ln 14-19
+        name: isGoExported
+        type: function
+      - location: Ln 5
+        name: isParserInitialized
+        type: variable
+  src/parsers/java.ts:
+    exports:
+      - location: Ln 22-102
+        name: JavaParser
+        type: class
+    hash: fe115e60a1ccaae56f6899dd185989a7d2514ef98a71176835e16073c8369536
+    imports:
+      - source: ../types.ts
+        symbols:
+          - ImportEntry
+          - LanguageParser
+          - ParseOptions
+          - ParseResult
+          - SymbolEntry
+      - source: ../types.ts
+        symbols:
+          - formatLocation
+      - source: web-tree-sitter
+        symbols:
+          - Parser
+    symbols:
+      - location: Ln 7-12
+        name: ensureParserInit
+        type: function
+      - location: Ln 14-20
+        name: isJavaPublic
+        type: function
+      - location: Ln 5
+        name: isParserInitialized
+        type: variable
+  src/parsers/python.ts:
+    exports:
+      - location: Ln 14-118
+        name: PythonParser
+        type: class
+    hash: 200ed04ee9b16ab4cfaa2f8f8756c96c327b5837b5c70c49eff9e130bf3ded81
+    imports:
+      - source: ../types.ts
+        symbols:
+          - ImportEntry
+          - LanguageParser
+          - ParseOptions
+          - ParseResult
+          - SymbolEntry
+      - source: ../types.ts
+        symbols:
+          - formatLocation
+      - source: web-tree-sitter
+        symbols:
+          - Parser
+    symbols:
+      - location: Ln 7-12
+        name: ensureParserInit
+        type: function
+      - location: Ln 5
+        name: isParserInitialized
+        type: variable
+  src/parsers/typescript.ts:
+    exports:
+      - location: Ln 14-150
+        name: TypeScriptParser
+        type: class
+    hash: f0160ee6e63d6cc51cb0eb8f9dd42f04c0ef435d3cf0c25bb64b71e594763d6f
+    imports:
+      - source: ../types.ts
+        symbols:
+          - ImportEntry
+          - LanguageParser
+          - ParseOptions
+          - ParseResult
+          - SymbolEntry
+      - source: ../types.ts
+        symbols:
+          - formatLocation
+      - source: web-tree-sitter
+        symbols:
+          - Parser
+    symbols:
+      - location: Ln 7-12
+        name: ensureParserInit
+        type: function
+      - location: Ln 5
+        name: isParserInitialized
+        type: variable
+  src/resolver.ts:
+    exports:
+      - location: Ln 4-184
+        name: resolveImports
+        type: function
+    hash: 26de28af071ddba07dbb1d441293914411ad319c7ef590d315b1f28480774000
+    imports:
+      - source: ./types.ts
+        symbols:
+          - FileEntry
+          - NamespaceEntry
+          - PackageDependencies
+      - source: node:path
+        symbols:
+          - path
+    symbols:
+      - location: Ln 45-53
+        name: isExternal
+        type: function
+  src/scanner.ts:
+    exports:
+      - location: Ln 23-26
+        name: calculateHash
+        type: function
+      - location: Ln 28-68
+        name: scanDirectory
+        type: function
+      - location: Ln 5-9
+        name: ScannedFile
+        type: type
+    hash: 0457b8ca3cbbc5ea664ce63dc0b13fad0fb7441ab2dbcae11fc469f9ed79bdac
+    imports:
+      - source: node:crypto
+        symbols:
+          - crypto
+      - source: node:fs
+        symbols:
+          - fs
+      - source: node:path
+        symbols:
+          - path
+    symbols:
+      - location: Ln 11-21
+        name: DEFAULT_IGNORED_DIRS
+        type: variable
+      - location: Ln 36-64
+        name: walk
+        type: function
+  src/types.ts:
+    exports:
+      - location: Ln 42-51
+        name: CodemapSchema
+        type: type
+      - location: Ln 30-35
+        name: FileEntry
+        type: type
+      - location: Ln 26-28
+        name: formatLocation
+        type: function
+      - location: Ln 15-18
+        name: ImportEntry
+        type: type
+      - location: Ln 64-67
+        name: LanguageParser
+        type: type
+      - location: Ln 37-40
+        name: NamespaceEntry
+        type: type
+      - location: Ln 7-13
+        name: PackageDependencies
+        type: type
+      - location: Ln 53-55
+        name: ParseOptions
+        type: type
+      - location: Ln 57-62
+        name: ParseResult
+        type: type
+      - location: Ln 1-5
+        name: ProjectMetadata
+        type: type
+      - location: Ln 20-24
+        name: SymbolEntry
+        type: type
+    hash: 025f075bbca200207049738a5afbd7a215e4175f65c51147e7905c2c6c974608
+    imports: []
+    symbols: []
+  src/utils/wasm-loader.ts:
+    exports:
+      - location: Ln 17-78
+        name: getWasmPath
+        type: function
+    hash: 4b39e55e8fe996c5e8a49b1e49465d8e98ff75a8a26bfd5df3ac1029fa5b64b4
+    imports:
+      - source: node:fs
+        symbols:
+          - fs
+      - source: node:os
+        symbols:
+          - os
+      - source: node:path
+        symbols:
+          - path
+      - source: node:url
+        symbols:
+          - fileURLToPath
+    symbols:
+      - location: Ln 15
+        name: CDN_BASE_URL
+        type: variable
+      - location: Ln 6-13
+        name: WASM_FILE_MAP
+        type: variable
+  src/writer.ts:
+    exports:
+      - location: Ln 61-64
+        name: generateDeterministicJson
+        type: function
+      - location: Ln 66-69
+        name: generateDeterministicYaml
+        type: function
+      - location: Ln 22-59
+        name: sortCodemapData
+        type: function
+    hash: 09e42db1bfd0d0114e1a2579ffddfb12481356bea1b244ae93b1c5a8333df493
+    imports:
+      - source: ./types.ts
+        symbols:
+          - CodemapSchema
+          - FileEntry
+          - NamespaceEntry
+      - source: yaml
+        symbols:
+          - stringify
+    symbols:
+      - location: Ln 5-20
+        name: sortObjectKeys
+        type: function
+  tests/integration.test.ts:
+    exports: []
+    hash: dec990cae05e353a5d11dd0a95e659c1cdf4b654f8d4027e4cfebfb4f3516039
+    imports:
+      - source: ../src/index.ts
+        symbols:
+          - createCodemap
+      - source: node:assert
+        symbols:
+          - assert
+      - source: node:fs
+        symbols:
+          - fs
+      - source: node:path
+        symbols:
+          - path
+      - source: node:test
+        symbols:
+          - test
+      - source: yaml
+        symbols:
+          - parse
+    symbols: []
+  tests/package-parser.test.ts:
+    exports: []
+    hash: 97dd9e8e959f7abbdb7953bfbbef7743b4dec40d3f9a6391ba13cfbcb3ffae17
+    imports:
+      - source: ../src/parser.ts
+        symbols:
+          - parsePackageDependencies
+      - source: node:assert
+        symbols:
+          - assert
+      - source: node:fs
+        symbols:
+          - fs
+      - source: node:path
+        symbols:
+          - path
+      - source: node:test
+        symbols:
+          - test
+    symbols: []
+  tests/parsers.test.ts:
+    exports: []
+    hash: 62cc43e6af0449dab01caa3620f24d06bda7922fa3cb5abd3e5863af3c7bbe49
+    imports:
+      - source: ../src/parsers/csharp.ts
+        symbols:
+          - CSharpParser
+      - source: ../src/parsers/go.ts
+        symbols:
+          - GoParser
+      - source: ../src/parsers/java.ts
+        symbols:
+          - JavaParser
+      - source: ../src/parsers/python.ts
+        symbols:
+          - PythonParser
+      - source: ../src/parsers/typescript.ts
+        symbols:
+          - TypeScriptParser
+      - source: ../src/utils/wasm-loader.ts
+        symbols:
+          - getWasmPath
+      - source: node:assert
+        symbols:
+          - assert
+      - source: node:test
+        symbols:
+          - test
+    symbols: []
+  tests/resolver.test.ts:
+    exports: []
+    hash: 65cf32a0902937498da9c0f1626e59d89b7021dcf57bef20caf9fba7389e1964
+    imports:
+      - source: ../src/resolver.ts
+        symbols:
+          - resolveImports
+      - source: ../src/types.ts
+        symbols:
+          - FileEntry
+          - NamespaceEntry
+          - PackageDependencies
+      - source: node:assert
+        symbols:
+          - assert
+      - source: node:test
+        symbols:
+          - test
+    symbols: []
+  tests/scanner.test.ts:
+    exports: []
+    hash: f388bd9fe03b6565b17c0945572652a9fc140dc6686563b6010936b970c368b1
+    imports:
+      - source: ../src/scanner.ts
+        symbols:
+          - scanDirectory
+      - source: node:assert
+        symbols:
+          - assert
+      - source: node:fs
+        symbols:
+          - fs
+      - source: node:path
+        symbols:
+          - path
+      - source: node:test
+        symbols:
+          - test
+    symbols: []
+  tests/wasm-loader.test.ts:
+    exports: []
+    hash: 49c0d02dbe091c5866a42bd6b6890020496df21bd47b4304101f66493b8523a4
+    imports:
+      - source: ../src/utils/wasm-loader.ts
+        symbols:
+          - getWasmPath
+      - source: node:assert
+        symbols:
+          - assert
+      - source: node:fs
+        symbols:
+          - fs
+      - source: node:test
+        symbols:
+          - test
+    symbols: []
+  tests/writer.test.ts:
+    exports: []
+    hash: 648c2d21b7cec14adf609262d7b9907048a8470cce16e54324797beedc82539c
+    imports:
+      - source: ../src/types.ts
+        symbols:
+          - CodemapSchema
+      - source: ../src/writer.ts
+        symbols:
+          - generateDeterministicJson
+          - generateDeterministicYaml
+      - source: node:assert
+        symbols:
+          - assert
+      - source: node:test
+        symbols:
+          - test
+      - source: yaml
+        symbols:
+          - parse
+    symbols: []
+internalLinks:
+  src/index.ts:createCodemap:
+    - tests/integration.test.ts
+  src/parser.ts:CodebaseParser:
+    - src/index.ts
+  src/parser.ts:parsePackageDependencies:
+    - src/index.ts
+    - tests/package-parser.test.ts
+  src/parsers/csharp.ts:CSharpParser:
+    - src/parser.ts
+    - tests/parsers.test.ts
+  src/parsers/go.ts:GoParser:
+    - src/parser.ts
+    - tests/parsers.test.ts
+  src/parsers/java.ts:JavaParser:
+    - src/parser.ts
+    - tests/parsers.test.ts
+  src/parsers/python.ts:PythonParser:
+    - src/parser.ts
+    - tests/parsers.test.ts
+  src/parsers/typescript.ts:TypeScriptParser:
+    - src/parser.ts
+    - tests/parsers.test.ts
+  src/resolver.ts:resolveImports:
+    - src/index.ts
+    - tests/resolver.test.ts
+  src/scanner.ts:scanDirectory:
+    - src/index.ts
+    - tests/scanner.test.ts
+  src/types.ts:CodemapSchema:
+    - src/index.ts
+    - src/writer.ts
+    - tests/writer.test.ts
+  src/types.ts:FileEntry:
+    - src/index.ts
+    - src/resolver.ts
+    - src/writer.ts
+    - tests/resolver.test.ts
+  src/types.ts:ImportEntry:
+    - src/parsers/csharp.ts
+    - src/parsers/go.ts
+    - src/parsers/java.ts
+    - src/parsers/python.ts
+    - src/parsers/typescript.ts
+  src/types.ts:LanguageParser:
+    - src/parser.ts
+    - src/parsers/csharp.ts
+    - src/parsers/go.ts
+    - src/parsers/java.ts
+    - src/parsers/python.ts
+    - src/parsers/typescript.ts
+  src/types.ts:NamespaceEntry:
+    - src/index.ts
+    - src/resolver.ts
+    - src/writer.ts
+    - tests/resolver.test.ts
+  src/types.ts:PackageDependencies:
+    - src/parser.ts
+    - src/resolver.ts
+    - tests/resolver.test.ts
+  src/types.ts:ParseOptions:
+    - src/parser.ts
+    - src/parsers/csharp.ts
+    - src/parsers/go.ts
+    - src/parsers/java.ts
+    - src/parsers/python.ts
+    - src/parsers/typescript.ts
+  src/types.ts:ParseResult:
+    - src/parser.ts
+    - src/parsers/csharp.ts
+    - src/parsers/go.ts
+    - src/parsers/java.ts
+    - src/parsers/python.ts
+    - src/parsers/typescript.ts
+  src/types.ts:SymbolEntry:
+    - src/parsers/csharp.ts
+    - src/parsers/go.ts
+    - src/parsers/java.ts
+    - src/parsers/python.ts
+    - src/parsers/typescript.ts
+  src/types.ts:formatLocation:
+    - src/parsers/csharp.ts
+    - src/parsers/go.ts
+    - src/parsers/java.ts
+    - src/parsers/python.ts
+    - src/parsers/typescript.ts
+  src/utils/wasm-loader.ts:getWasmPath:
+    - src/parser.ts
+    - tests/parsers.test.ts
+    - tests/wasm-loader.test.ts
+  src/writer.ts:generateDeterministicJson:
+    - src/index.ts
+    - tests/writer.test.ts
+  src/writer.ts:generateDeterministicYaml:
+    - src/index.ts
+    - tests/writer.test.ts
+namespaces: {}
+packageDependencies:
+  npm:
+    "@types/node": ^20.11.0
+    tree-sitter-wasms: ^0.1.11
+    typescript: ^5.3.3
+    web-tree-sitter: ^0.22.4
+    yaml: ^2.4.5
+project:
+  languages:
+    - typescript
+  name: bold-hypatia
+  root: .
+version: 1.0.0

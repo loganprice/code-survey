@@ -1,0 +1,31 @@
+{
+  "name": "@loganprice/codemap",
+  "version": "1.0.0",
+  "description": "Deterministic codebase mapping tool for coding agents",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "codemap": "./bin/codemap.ts"
+  },
+  "scripts": {
+    "test": "deno test --allow-read --allow-write --allow-sys --allow-env tests/",
+    "test:node": "node --experimental-strip-types --test tests/**/*.test.ts"
+  },
+  "keywords": [
+    "codemap",
+    "ast",
+    "parser",
+    "dependency-graph"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "tree-sitter-wasms": "^0.1.11",
+    "web-tree-sitter": "^0.22.4",
+    "yaml": "^2.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
+}

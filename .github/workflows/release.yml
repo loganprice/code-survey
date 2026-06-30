@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    name: Build and Release Binaries
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Deno
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+
+    - name: Preinstall NPM dependencies for Deno cache
+      run: npm ci
+
+    - name: Compile Linux x64 Binary
+      run: deno compile --node-modules-dir=none --allow-read --allow-write --allow-sys --allow-env --allow-net --target x86_64-unknown-linux-gnu --output codemap-linux-x64 bin/codemap.ts
+
+    - name: Compile Windows x64 Binary
+      run: deno compile --node-modules-dir=none --allow-read --allow-write --allow-sys --allow-env --allow-net --target x86_64-pc-windows-msvc --output codemap-windows-x64.exe bin/codemap.ts
+
+    - name: Compile macOS Intel Binary
+      run: deno compile --node-modules-dir=none --allow-read --allow-write --allow-sys --allow-env --allow-net --target x86_64-apple-darwin --output codemap-macos-x64 bin/codemap.ts
+
+    - name: Compile macOS ARM64 Binary
+      run: deno compile --node-modules-dir=none --allow-read --allow-write --allow-sys --allow-env --allow-net --target aarch64-apple-darwin --output codemap-macos-arm64 bin/codemap.ts
+
+    - name: Create GitHub Release and Upload Assets
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          codemap-linux-x64
+          codemap-windows-x64.exe
+          codemap-macos-x64
+          codemap-macos-arm64
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

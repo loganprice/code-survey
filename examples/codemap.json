@@ -1,0 +1,3298 @@
+{
+  "$schema": "https://raw.githubusercontent.com/username/codemap/main/schema.json",
+  "externalImports": {
+    "web-tree-sitter": [
+      "src/parsers/csharp.ts",
+      "src/parsers/go.ts",
+      "src/parsers/java.ts",
+      "src/parsers/python.ts",
+      "src/parsers/typescript.ts"
+    ]
+  },
+  "files": {
+    "src/index.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 13,
+            "start": 9
+          },
+          "name": "CodemapOptions",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 129,
+            "start": 15
+          },
+          "name": "createCodemap",
+          "type": "function"
+        }
+      ],
+      "hash": "7e4e7736a022f7c7d1d7361be07daa099c3fe0be2b9811c3a7eba89ffb87611f",
+      "imports": [
+        {
+          "source": "./parser.ts",
+          "symbols": [
+            "CodebaseParser",
+            "parsePackageDependencies"
+          ]
+        },
+        {
+          "source": "./resolver.ts",
+          "symbols": [
+            "resolveImports"
+          ]
+        },
+        {
+          "source": "./scanner.ts",
+          "symbols": [
+            "scanDirectory"
+          ]
+        },
+        {
+          "source": "./types.ts",
+          "symbols": [
+            "CodemapSchema",
+            "FileEntry",
+            "NamespaceEntry"
+          ]
+        },
+        {
+          "source": "./writer.ts",
+          "symbols": [
+            "generateDeterministicJson"
+          ]
+        },
+        {
+          "source": "node:fs",
+          "symbols": [
+            "fs"
+          ]
+        },
+        {
+          "source": "node:path",
+          "symbols": [
+            "path"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 66,
+            "start": 66
+          },
+          "name": "code",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 28,
+            "start": 28
+          },
+          "name": "detectedLanguages",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 17,
+            "start": 17
+          },
+          "name": "excludes",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 43,
+            "start": 43
+          },
+          "name": "ext",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 26,
+            "start": 26
+          },
+          "name": "files",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 123,
+            "start": 123
+          },
+          "name": "jsonStr",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 48,
+            "start": 48
+          },
+          "name": "lang",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 27,
+            "start": 27
+          },
+          "name": "namespaces",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 78,
+            "start": 78
+          },
+          "name": "ns",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 124,
+            "start": 124
+          },
+          "name": "outputDir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 97,
+            "start": 97
+          },
+          "name": "packageDependencies",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 23,
+            "start": 23
+          },
+          "name": "parser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 67,
+            "start": 67
+          },
+          "name": "parseResult",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 16,
+            "start": 16
+          },
+          "name": "rootDir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 20,
+            "start": 20
+          },
+          "name": "scannedFiles",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 120,
+            "start": 107
+          },
+          "name": "schemaObj",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 40,
+            "start": 31
+          },
+          "name": "supportedExtensions",
+          "type": "variable"
+        }
+      ]
+    },
+    "src/parser.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 189,
+            "start": 148
+          },
+          "name": "CodebaseParser",
+          "type": "class"
+        },
+        {
+          "location": {
+            "end": 144,
+            "start": 13
+          },
+          "name": "parsePackageDependencies",
+          "type": "function"
+        }
+      ],
+      "hash": "a9db897e226b7a9748ef7767f0f1e85e5bd1853c553cc162ebe15b27c326a9ea",
+      "imports": [
+        {
+          "source": "./parsers/csharp.ts",
+          "symbols": [
+            "CSharpParser"
+          ]
+        },
+        {
+          "source": "./parsers/go.ts",
+          "symbols": [
+            "GoParser"
+          ]
+        },
+        {
+          "source": "./parsers/java.ts",
+          "symbols": [
+            "JavaParser"
+          ]
+        },
+        {
+          "source": "./parsers/python.ts",
+          "symbols": [
+            "PythonParser"
+          ]
+        },
+        {
+          "source": "./parsers/typescript.ts",
+          "symbols": [
+            "TypeScriptParser"
+          ]
+        },
+        {
+          "source": "./types.ts",
+          "symbols": [
+            "LanguageParser",
+            "PackageDependencies",
+            "ParseResult"
+          ]
+        },
+        {
+          "source": "./utils/wasm-loader.ts",
+          "symbols": [
+            "getWasmPath"
+          ]
+        },
+        {
+          "source": "node:fs",
+          "symbols": [
+            "fs"
+          ]
+        },
+        {
+          "source": "node:path",
+          "symbols": [
+            "path"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 75,
+            "start": 75
+          },
+          "name": "artifactId",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 100,
+            "start": 100
+          },
+          "name": "attrs",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 73,
+            "start": 73
+          },
+          "name": "block",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 20,
+            "start": 20
+          },
+          "name": "content",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 34,
+            "start": 34
+          },
+          "name": "content",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 68,
+            "start": 68
+          },
+          "name": "content",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 94,
+            "start": 94
+          },
+          "name": "content",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 156,
+            "start": 156
+          },
+          "name": "csParser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 91,
+            "start": 91
+          },
+          "name": "csprojFile",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 70,
+            "start": 70
+          },
+          "name": "depRegex",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 14,
+            "start": 14
+          },
+          "name": "deps",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 178,
+            "start": 178
+          },
+          "name": "ext",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 90,
+            "start": 90
+          },
+          "name": "files",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 35,
+            "start": 35
+          },
+          "name": "goDeps",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 31,
+            "start": 31
+          },
+          "name": "goModPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 154,
+            "start": 154
+          },
+          "name": "goParser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 74,
+            "start": 74
+          },
+          "name": "groupId",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 101,
+            "start": 101
+          },
+          "name": "include",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 155,
+            "start": 155
+          },
+          "name": "javaParser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 41,
+            "start": 41
+          },
+          "name": "lines",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 120,
+            "start": 120
+          },
+          "name": "lines",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 39,
+            "start": 39
+          },
+          "name": "match",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 71,
+            "start": 71
+          },
+          "name": "match",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 98,
+            "start": 98
+          },
+          "name": "match",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 126,
+            "start": 126
+          },
+          "name": "match",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 69,
+            "start": 69
+          },
+          "name": "mavenDeps",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 95,
+            "start": 95
+          },
+          "name": "nugetDeps",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 97,
+            "start": 97
+          },
+          "name": "packageRefRegex",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 183,
+            "start": 183
+          },
+          "name": "parser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 43,
+            "start": 43
+          },
+          "name": "parts",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 121,
+            "start": 121
+          },
+          "name": "pipDeps",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 17,
+            "start": 17
+          },
+          "name": "pkgJsonPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 65,
+            "start": 65
+          },
+          "name": "pomPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 153,
+            "start": 153
+          },
+          "name": "pyParser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 117,
+            "start": 117
+          },
+          "name": "reqPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 38,
+            "start": 38
+          },
+          "name": "requireBlockRegex",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 51,
+            "start": 51
+          },
+          "name": "singleRequireRegex",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 123,
+            "start": 123
+          },
+          "name": "trimmed",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 152,
+            "start": 152
+          },
+          "name": "tsParser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 76,
+            "start": 76
+          },
+          "name": "version",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 102,
+            "start": 102
+          },
+          "name": "version",
+          "type": "variable"
+        }
+      ]
+    },
+    "src/parsers/csharp.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 116,
+            "start": 18
+          },
+          "name": "CSharpParser",
+          "type": "class"
+        }
+      ],
+      "hash": "1f35011bc9b9353fea03f21f56c9c138727ed41202417d79607039f4d27b38f8",
+      "imports": [
+        {
+          "source": "../types.ts",
+          "symbols": [
+            "ImportEntry",
+            "LanguageParser",
+            "ParseResult",
+            "SymbolEntry"
+          ]
+        },
+        {
+          "source": "web-tree-sitter",
+          "symbols": [
+            "Parser"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 11,
+            "start": 6
+          },
+          "name": "ensureParserInit",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 32,
+            "start": 32
+          },
+          "name": "exports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 44,
+            "start": 42
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 54,
+            "start": 52
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 69,
+            "start": 69
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 94,
+            "start": 94
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 31,
+            "start": 31
+          },
+          "name": "imports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 16,
+            "start": 13
+          },
+          "name": "isCSharpPublic",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 4,
+            "start": 4
+          },
+          "name": "isParserInitialized",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 82,
+            "start": 75
+          },
+          "name": "item",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 14,
+            "start": 14
+          },
+          "name": "modifiers",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 34,
+            "start": 34
+          },
+          "name": "namespace",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 33,
+            "start": 33
+          },
+          "name": "symbols",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 71,
+            "start": 71
+          },
+          "name": "symType",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 30,
+            "start": 30
+          },
+          "name": "tree",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 110,
+            "start": 36
+          },
+          "name": "visit",
+          "type": "variable"
+        }
+      ]
+    },
+    "src/parsers/go.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 126,
+            "start": 20
+          },
+          "name": "GoParser",
+          "type": "class"
+        }
+      ],
+      "hash": "67bc85f2d3aad918710586b747d5ae13a18c4fc813fa31921a09105882af9f7a",
+      "imports": [
+        {
+          "source": "../types.ts",
+          "symbols": [
+            "ImportEntry",
+            "LanguageParser",
+            "ParseResult",
+            "SymbolEntry"
+          ]
+        },
+        {
+          "source": "web-tree-sitter",
+          "symbols": [
+            "Parser"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 80,
+            "start": 66
+          },
+          "name": "addGoSymbol",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 11,
+            "start": 6
+          },
+          "name": "ensureParserInit",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 34,
+            "start": 34
+          },
+          "name": "exports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 15,
+            "start": 15
+          },
+          "name": "firstChar",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 41,
+            "start": 41
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 87,
+            "start": 87
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 97,
+            "start": 97
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 108,
+            "start": 108
+          },
+          "name": "ids",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 33,
+            "start": 33
+          },
+          "name": "imports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 18,
+            "start": 13
+          },
+          "name": "isGoExported",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 4,
+            "start": 4
+          },
+          "name": "isParserInitialized",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 62,
+            "start": 62
+          },
+          "name": "isTopLevel",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 74,
+            "start": 67
+          },
+          "name": "item",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 36,
+            "start": 36
+          },
+          "name": "namespace",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 53,
+            "start": 53
+          },
+          "name": "source",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 51,
+            "start": 49
+          },
+          "name": "stringNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 35,
+            "start": 35
+          },
+          "name": "symbols",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 32,
+            "start": 32
+          },
+          "name": "tree",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 120,
+            "start": 38
+          },
+          "name": "visit",
+          "type": "variable"
+        }
+      ]
+    },
+    "src/parsers/java.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 107,
+            "start": 21
+          },
+          "name": "JavaParser",
+          "type": "class"
+        }
+      ],
+      "hash": "aa29d6d30c6b4419b551e7fa3df40c000eadad9e373ccccd7c87fc9ddc913646",
+      "imports": [
+        {
+          "source": "../types.ts",
+          "symbols": [
+            "ImportEntry",
+            "LanguageParser",
+            "ParseResult",
+            "SymbolEntry"
+          ]
+        },
+        {
+          "source": "web-tree-sitter",
+          "symbols": [
+            "Parser"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 11,
+            "start": 6
+          },
+          "name": "ensureParserInit",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 35,
+            "start": 35
+          },
+          "name": "exports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 44,
+            "start": 42
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 54,
+            "start": 52
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 65,
+            "start": 65
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 85,
+            "start": 85
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 34,
+            "start": 34
+          },
+          "name": "imports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 19,
+            "start": 13
+          },
+          "name": "isJavaPublic",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 4,
+            "start": 4
+          },
+          "name": "isParserInitialized",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 74,
+            "start": 67
+          },
+          "name": "item",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 14,
+            "start": 14
+          },
+          "name": "modifiers",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 37,
+            "start": 37
+          },
+          "name": "namespace",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 36,
+            "start": 36
+          },
+          "name": "symbols",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 33,
+            "start": 33
+          },
+          "name": "tree",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 101,
+            "start": 39
+          },
+          "name": "visit",
+          "type": "variable"
+        }
+      ]
+    },
+    "src/parsers/python.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 123,
+            "start": 13
+          },
+          "name": "PythonParser",
+          "type": "class"
+        }
+      ],
+      "hash": "b88e6e70441df5bbc35e08362c49f7eb1c90f444e0e5e2238e72c21f2917493e",
+      "imports": [
+        {
+          "source": "../types.ts",
+          "symbols": [
+            "ImportEntry",
+            "LanguageParser",
+            "ParseResult",
+            "SymbolEntry"
+          ]
+        },
+        {
+          "source": "web-tree-sitter",
+          "symbols": [
+            "Parser"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 54,
+            "start": 54
+          },
+          "name": "child",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 33,
+            "start": 33
+          },
+          "name": "dottedNames",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 44,
+            "start": 44
+          },
+          "name": "dottedNames",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 11,
+            "start": 6
+          },
+          "name": "ensureParserInit",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 27,
+            "start": 27
+          },
+          "name": "exports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 53,
+            "start": 53
+          },
+          "name": "i",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 77,
+            "start": 77
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 96,
+            "start": 96
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 47,
+            "start": 47
+          },
+          "name": "importedSymbols",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 50,
+            "start": 50
+          },
+          "name": "importIndex",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 26,
+            "start": 26
+          },
+          "name": "imports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 80,
+            "start": 80
+          },
+          "name": "isInternal",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 99,
+            "start": 99
+          },
+          "name": "isInternal",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 4,
+            "start": 4
+          },
+          "name": "isParserInitialized",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 72,
+            "start": 72
+          },
+          "name": "isTopLevel",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 88,
+            "start": 81
+          },
+          "name": "item",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 107,
+            "start": 100
+          },
+          "name": "item",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 79,
+            "start": 79
+          },
+          "name": "name",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 98,
+            "start": 98
+          },
+          "name": "name",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 59,
+            "start": 59
+          },
+          "name": "realNameNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 46,
+            "start": 46
+          },
+          "name": "source",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 28,
+            "start": 28
+          },
+          "name": "symbols",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 25,
+            "start": 25
+          },
+          "name": "tree",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 117,
+            "start": 30
+          },
+          "name": "visit",
+          "type": "variable"
+        }
+      ]
+    },
+    "src/parsers/typescript.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 152,
+            "start": 13
+          },
+          "name": "TypeScriptParser",
+          "type": "class"
+        }
+      ],
+      "hash": "c9179494cade62de4d675acaa33ab5619687ac45fbe4c94ca2817fe8b586152b",
+      "imports": [
+        {
+          "source": "../types.ts",
+          "symbols": [
+            "ImportEntry",
+            "LanguageParser",
+            "ParseResult",
+            "SymbolEntry"
+          ]
+        },
+        {
+          "source": "web-tree-sitter",
+          "symbols": [
+            "Parser"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 93,
+            "start": 79
+          },
+          "name": "addSymbol",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 42,
+            "start": 42
+          },
+          "name": "clause",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 45,
+            "start": 45
+          },
+          "name": "defaultImportId",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 11,
+            "start": 6
+          },
+          "name": "ensureParserInit",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 27,
+            "start": 27
+          },
+          "name": "exports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 37,
+            "start": 37
+          },
+          "name": "fragment",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 55,
+            "start": 55
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 66,
+            "start": 66
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 97,
+            "start": 97
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 105,
+            "start": 105
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 113,
+            "start": 113
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 123,
+            "start": 123
+          },
+          "name": "idNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 41,
+            "start": 41
+          },
+          "name": "importedSymbols",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 26,
+            "start": 26
+          },
+          "name": "imports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 76,
+            "start": 76
+          },
+          "name": "isExported",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 4,
+            "start": 4
+          },
+          "name": "isParserInitialized",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 127,
+            "start": 127
+          },
+          "name": "isVarExported",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 87,
+            "start": 80
+          },
+          "name": "item",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 135,
+            "start": 128
+          },
+          "name": "item",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 51,
+            "start": 51
+          },
+          "name": "namedImports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 64,
+            "start": 64
+          },
+          "name": "namespaceImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 34,
+            "start": 34
+          },
+          "name": "source",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 33,
+            "start": 33
+          },
+          "name": "stringNode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 28,
+            "start": 28
+          },
+          "name": "symbols",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 25,
+            "start": 25
+          },
+          "name": "tree",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 146,
+            "start": 30
+          },
+          "name": "visit",
+          "type": "variable"
+        }
+      ]
+    },
+    "src/resolver.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 184,
+            "start": 4
+          },
+          "name": "resolveImports",
+          "type": "function"
+        }
+      ],
+      "hash": "26de28af071ddba07dbb1d441293914411ad319c7ef590d315b1f28480774000",
+      "imports": [
+        {
+          "source": "./types.ts",
+          "symbols": [
+            "FileEntry",
+            "NamespaceEntry",
+            "PackageDependencies"
+          ]
+        },
+        {
+          "source": "node:path",
+          "symbols": [
+            "path"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 23,
+            "start": 18
+          },
+          "name": "addExternalImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 36,
+            "start": 26
+          },
+          "name": "addInternalLink",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 127,
+            "start": 127
+          },
+          "name": "candidate",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 82,
+            "start": 72
+          },
+          "name": "candidates",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 162,
+            "start": 162
+          },
+          "name": "className",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 115,
+            "start": 115
+          },
+          "name": "dotCount",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 113,
+            "start": 113
+          },
+          "name": "dots",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 56,
+            "start": 56
+          },
+          "name": "entry",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 12,
+            "start": 12
+          },
+          "name": "externalImports",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 15,
+            "start": 15
+          },
+          "name": "filePaths",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 43,
+            "start": 43
+          },
+          "name": "goPackages",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 117,
+            "start": 117
+          },
+          "name": "i",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 60,
+            "start": 60
+          },
+          "name": "imp",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 13,
+            "start": 13
+          },
+          "name": "internalLinks",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 53,
+            "start": 45
+          },
+          "name": "isExternal",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 109,
+            "start": 106
+          },
+          "name": "isPythonDotted",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 31,
+            "start": 31
+          },
+          "name": "key",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 160,
+            "start": 160
+          },
+          "name": "lastDot",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 42,
+            "start": 42
+          },
+          "name": "mavenPackages",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 86,
+            "start": 86
+          },
+          "name": "normalizedCand",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 111,
+            "start": 111
+          },
+          "name": "normalizedSource",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 39,
+            "start": 39
+          },
+          "name": "npmPackages",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 142,
+            "start": 142
+          },
+          "name": "ns",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 164,
+            "start": 164
+          },
+          "name": "ns",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 161,
+            "start": 161
+          },
+          "name": "nsName",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 41,
+            "start": 41
+          },
+          "name": "nugetPackages",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 40,
+            "start": 40
+          },
+          "name": "pipPackages",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 114,
+            "start": 114
+          },
+          "name": "remainder",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 70,
+            "start": 70
+          },
+          "name": "resolvedBase",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 84,
+            "start": 84
+          },
+          "name": "resolvedFile",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 176,
+            "start": 176
+          },
+          "name": "simpleCandidate",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 57,
+            "start": 57
+          },
+          "name": "sourceDir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 116,
+            "start": 116
+          },
+          "name": "targetDir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 148,
+            "start": 148
+          },
+          "name": "targetEntry",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 166,
+            "start": 166
+          },
+          "name": "targetEntry",
+          "type": "variable"
+        }
+      ]
+    },
+    "src/scanner.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 26,
+            "start": 23
+          },
+          "name": "calculateHash",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 68,
+            "start": 28
+          },
+          "name": "scanDirectory",
+          "type": "function"
+        },
+        {
+          "location": {
+            "end": 9,
+            "start": 5
+          },
+          "name": "ScannedFile",
+          "type": "type"
+        }
+      ],
+      "hash": "0457b8ca3cbbc5ea664ce63dc0b13fad0fb7441ab2dbcae11fc469f9ed79bdac",
+      "imports": [
+        {
+          "source": "node:crypto",
+          "symbols": [
+            "crypto"
+          ]
+        },
+        {
+          "source": "node:fs",
+          "symbols": [
+            "fs"
+          ]
+        },
+        {
+          "source": "node:path",
+          "symbols": [
+            "path"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 32,
+            "start": 32
+          },
+          "name": "absoluteRoot",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 24,
+            "start": 24
+          },
+          "name": "content",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 21,
+            "start": 11
+          },
+          "name": "DEFAULT_IGNORED_DIRS",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 37,
+            "start": 37
+          },
+          "name": "entries",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 40,
+            "start": 40
+          },
+          "name": "entryName",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 33,
+            "start": 33
+          },
+          "name": "excludeSet",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 41,
+            "start": 41
+          },
+          "name": "fullPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 56,
+            "start": 56
+          },
+          "name": "hash",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 42,
+            "start": 42
+          },
+          "name": "relativePath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 34,
+            "start": 34
+          },
+          "name": "results",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 64,
+            "start": 36
+          },
+          "name": "walk",
+          "type": "function"
+        }
+      ]
+    },
+    "src/types.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 52,
+            "start": 43
+          },
+          "name": "CodemapSchema",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 36,
+            "start": 31
+          },
+          "name": "FileEntry",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 23,
+            "start": 20
+          },
+          "name": "ImportEntry",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 64,
+            "start": 61
+          },
+          "name": "LanguageParser",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 18,
+            "start": 15
+          },
+          "name": "Location",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 41,
+            "start": 38
+          },
+          "name": "NamespaceEntry",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 13,
+            "start": 7
+          },
+          "name": "PackageDependencies",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 59,
+            "start": 54
+          },
+          "name": "ParseResult",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 5,
+            "start": 1
+          },
+          "name": "ProjectMetadata",
+          "type": "type"
+        },
+        {
+          "location": {
+            "end": 29,
+            "start": 25
+          },
+          "name": "SymbolEntry",
+          "type": "type"
+        }
+      ],
+      "hash": "7d02e4764478ca3e5623da94292ac19db6fea850ef4cc26f4e067cc934fdcacb",
+      "imports": [],
+      "symbols": []
+    },
+    "src/utils/wasm-loader.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 78,
+            "start": 17
+          },
+          "name": "getWasmPath",
+          "type": "function"
+        }
+      ],
+      "hash": "4b39e55e8fe996c5e8a49b1e49465d8e98ff75a8a26bfd5df3ac1029fa5b64b4",
+      "imports": [
+        {
+          "source": "node:fs",
+          "symbols": [
+            "fs"
+          ]
+        },
+        {
+          "source": "node:os",
+          "symbols": [
+            "os"
+          ]
+        },
+        {
+          "source": "node:path",
+          "symbols": [
+            "path"
+          ]
+        },
+        {
+          "source": "node:url",
+          "symbols": [
+            "fileURLToPath"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 69,
+            "start": 69
+          },
+          "name": "arrayBuffer",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 70,
+            "start": 70
+          },
+          "name": "buffer",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 51,
+            "start": 51
+          },
+          "name": "cacheDir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 52,
+            "start": 52
+          },
+          "name": "cachePath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 15,
+            "start": 15
+          },
+          "name": "CDN_BASE_URL",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 24,
+            "start": 24
+          },
+          "name": "currentDir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 18,
+            "start": 18
+          },
+          "name": "fileName",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 45,
+            "start": 39
+          },
+          "name": "localPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 33,
+            "start": 25
+          },
+          "name": "nodeModulesPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 65,
+            "start": 65
+          },
+          "name": "response",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 63,
+            "start": 63
+          },
+          "name": "url",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 13,
+            "start": 6
+          },
+          "name": "WASM_FILE_MAP",
+          "type": "variable"
+        }
+      ]
+    },
+    "src/writer.ts": {
+      "exports": [
+        {
+          "location": {
+            "end": 61,
+            "start": 21
+          },
+          "name": "generateDeterministicJson",
+          "type": "function"
+        }
+      ],
+      "hash": "ccd1ce45e0e2adf8ec979347b44a8a68d92b9f4f7047ff149a4d1f35814195ba",
+      "imports": [
+        {
+          "source": "./types.ts",
+          "symbols": [
+            "CodemapSchema",
+            "FileEntry",
+            "NamespaceEntry"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 23,
+            "start": 23
+          },
+          "name": "clone",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 30,
+            "start": 30
+          },
+          "name": "fileEntry",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 14,
+            "start": 14
+          },
+          "name": "keys",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 41,
+            "start": 41
+          },
+          "name": "nsEntry",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 57,
+            "start": 57
+          },
+          "name": "sortedData",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 13,
+            "start": 13
+          },
+          "name": "sortedObj",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 19,
+            "start": 4
+          },
+          "name": "sortObjectKeys",
+          "type": "function"
+        }
+      ]
+    },
+    "tests/integration.test.ts": {
+      "exports": [],
+      "hash": "fc02f45eebe231ebfa2e8d0a8b50ab843f0fba0792aaaddbed8e74f0fc262a16",
+      "imports": [
+        {
+          "source": "../src/index.ts",
+          "symbols": [
+            "createCodemap"
+          ]
+        },
+        {
+          "source": "node:assert",
+          "symbols": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:fs",
+          "symbols": [
+            "fs"
+          ]
+        },
+        {
+          "source": "node:path",
+          "symbols": [
+            "path"
+          ]
+        },
+        {
+          "source": "node:test",
+          "symbols": [
+            "test"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 63,
+            "start": 63
+          },
+          "name": "content",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 55,
+            "start": 55
+          },
+          "name": "outputPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 14,
+            "start": 14
+          },
+          "name": "srcDir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 8,
+            "start": 8
+          },
+          "name": "tempDir",
+          "type": "variable"
+        }
+      ]
+    },
+    "tests/package-parser.test.ts": {
+      "exports": [],
+      "hash": "97dd9e8e959f7abbdb7953bfbbef7743b4dec40d3f9a6391ba13cfbcb3ffae17",
+      "imports": [
+        {
+          "source": "../src/parser.ts",
+          "symbols": [
+            "parsePackageDependencies"
+          ]
+        },
+        {
+          "source": "node:assert",
+          "symbols": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:fs",
+          "symbols": [
+            "fs"
+          ]
+        },
+        {
+          "source": "node:path",
+          "symbols": [
+            "path"
+          ]
+        },
+        {
+          "source": "node:test",
+          "symbols": [
+            "test"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 68,
+            "start": 68
+          },
+          "name": "deps",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 8,
+            "start": 8
+          },
+          "name": "tempDir",
+          "type": "variable"
+        }
+      ]
+    },
+    "tests/parsers.test.ts": {
+      "exports": [],
+      "hash": "724afd0f7eb30ad4fcdd63e55f523fb3b554e473972828e751159a9a5d8ddb9d",
+      "imports": [
+        {
+          "source": "../src/parsers/csharp.ts",
+          "symbols": [
+            "CSharpParser"
+          ]
+        },
+        {
+          "source": "../src/parsers/go.ts",
+          "symbols": [
+            "GoParser"
+          ]
+        },
+        {
+          "source": "../src/parsers/java.ts",
+          "symbols": [
+            "JavaParser"
+          ]
+        },
+        {
+          "source": "../src/parsers/python.ts",
+          "symbols": [
+            "PythonParser"
+          ]
+        },
+        {
+          "source": "../src/parsers/typescript.ts",
+          "symbols": [
+            "TypeScriptParser"
+          ]
+        },
+        {
+          "source": "../src/utils/wasm-loader.ts",
+          "symbols": [
+            "getWasmPath"
+          ]
+        },
+        {
+          "source": "node:assert",
+          "symbols": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:test",
+          "symbols": [
+            "test"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 98,
+            "start": 98
+          },
+          "name": "calcExport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 155,
+            "start": 155
+          },
+          "name": "calcExport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 51,
+            "start": 51
+          },
+          "name": "calculateExport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 94,
+            "start": 94
+          },
+          "name": "classExport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 151,
+            "start": 151
+          },
+          "name": "configExport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 264,
+            "start": 264
+          },
+          "name": "controllerExport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 147,
+            "start": 147
+          },
+          "name": "fmtImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 37,
+            "start": 37
+          },
+          "name": "helperImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 277,
+            "start": 277
+          },
+          "name": "helperMethod",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 56,
+            "start": 56
+          },
+          "name": "helperSymbol",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 164,
+            "start": 164
+          },
+          "name": "helperSymbol",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 211,
+            "start": 211
+          },
+          "name": "internalClass",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 269,
+            "start": 269
+          },
+          "name": "internalController",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 103,
+            "start": 103
+          },
+          "name": "internalSymbol",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 202,
+            "start": 202
+          },
+          "name": "listImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 41,
+            "start": 41
+          },
+          "name": "lodashImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 206,
+            "start": 206
+          },
+          "name": "mainExport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 215,
+            "start": 215
+          },
+          "name": "mainMethod",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 85,
+            "start": 85
+          },
+          "name": "mathImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 145,
+            "start": 145
+          },
+          "name": "mathImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 31,
+            "start": 15
+          },
+          "name": "mockCode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 79,
+            "start": 66
+          },
+          "name": "mockCode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 136,
+            "start": 113
+          },
+          "name": "mockCode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 193,
+            "start": 174
+          },
+          "name": "mockCode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 251,
+            "start": 229
+          },
+          "name": "mockCode",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 89,
+            "start": 89
+          },
+          "name": "osImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 12,
+            "start": 12
+          },
+          "name": "parser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 63,
+            "start": 63
+          },
+          "name": "parser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 110,
+            "start": 110
+          },
+          "name": "parser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 171,
+            "start": 171
+          },
+          "name": "parser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 226,
+            "start": 226
+          },
+          "name": "parser",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 33,
+            "start": 33
+          },
+          "name": "result",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 81,
+            "start": 81
+          },
+          "name": "result",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 138,
+            "start": 138
+          },
+          "name": "result",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 195,
+            "start": 195
+          },
+          "name": "result",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 253,
+            "start": 253
+          },
+          "name": "result",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 219,
+            "start": 219
+          },
+          "name": "runHelperMethod",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 273,
+            "start": 273
+          },
+          "name": "runMethod",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 46,
+            "start": 46
+          },
+          "name": "serviceExport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 160,
+            "start": 160
+          },
+          "name": "stateSymbol",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 260,
+            "start": 260
+          },
+          "name": "sysImport",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 11,
+            "start": 11
+          },
+          "name": "wasmPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 62,
+            "start": 62
+          },
+          "name": "wasmPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 109,
+            "start": 109
+          },
+          "name": "wasmPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 170,
+            "start": 170
+          },
+          "name": "wasmPath",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 225,
+            "start": 225
+          },
+          "name": "wasmPath",
+          "type": "variable"
+        }
+      ]
+    },
+    "tests/resolver.test.ts": {
+      "exports": [],
+      "hash": "fd5d3db967423638b57a77209d5ce4eb3b6e36bad96f01adeb9ff42a31ed5fdb",
+      "imports": [
+        {
+          "source": "../src/resolver.ts",
+          "symbols": [
+            "resolveImports"
+          ]
+        },
+        {
+          "source": "../src/types.ts",
+          "symbols": [
+            "FileEntry",
+            "NamespaceEntry",
+            "PackageDependencies"
+          ]
+        },
+        {
+          "source": "node:assert",
+          "symbols": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:test",
+          "symbols": [
+            "test"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 56,
+            "start": 7
+          },
+          "name": "files",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 63,
+            "start": 58
+          },
+          "name": "namespaces",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 67,
+            "start": 65
+          },
+          "name": "packageDeps",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 69,
+            "start": 69
+          },
+          "name": "result",
+          "type": "variable"
+        }
+      ]
+    },
+    "tests/scanner.test.ts": {
+      "exports": [],
+      "hash": "f388bd9fe03b6565b17c0945572652a9fc140dc6686563b6010936b970c368b1",
+      "imports": [
+        {
+          "source": "../src/scanner.ts",
+          "symbols": [
+            "scanDirectory"
+          ]
+        },
+        {
+          "source": "node:assert",
+          "symbols": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:fs",
+          "symbols": [
+            "fs"
+          ]
+        },
+        {
+          "source": "node:path",
+          "symbols": [
+            "path"
+          ]
+        },
+        {
+          "source": "node:test",
+          "symbols": [
+            "test"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 46,
+            "start": 46
+          },
+          "name": "file1Entry",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 39,
+            "start": 39
+          },
+          "name": "filePaths",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 24,
+            "start": 24
+          },
+          "name": "gitDir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 28,
+            "start": 28
+          },
+          "name": "nodeModulesDir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 36,
+            "start": 36
+          },
+          "name": "result",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 19,
+            "start": 19
+          },
+          "name": "subdir",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 9,
+            "start": 9
+          },
+          "name": "tempDir",
+          "type": "variable"
+        }
+      ]
+    },
+    "tests/wasm-loader.test.ts": {
+      "exports": [],
+      "hash": "49c0d02dbe091c5866a42bd6b6890020496df21bd47b4304101f66493b8523a4",
+      "imports": [
+        {
+          "source": "../src/utils/wasm-loader.ts",
+          "symbols": [
+            "getWasmPath"
+          ]
+        },
+        {
+          "source": "node:assert",
+          "symbols": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:fs",
+          "symbols": [
+            "fs"
+          ]
+        },
+        {
+          "source": "node:test",
+          "symbols": [
+            "test"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 7,
+            "start": 7
+          },
+          "name": "languages",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 10,
+            "start": 10
+          },
+          "name": "wasmPath",
+          "type": "variable"
+        }
+      ]
+    },
+    "tests/writer.test.ts": {
+      "exports": [],
+      "hash": "b5e72cf838a47d91d24f594146f922ff477367a5dae821b0863d52121a41c30d",
+      "imports": [
+        {
+          "source": "../src/types.ts",
+          "symbols": [
+            "CodemapSchema"
+          ]
+        },
+        {
+          "source": "../src/writer.ts",
+          "symbols": [
+            "generateDeterministicJson"
+          ]
+        },
+        {
+          "source": "node:assert",
+          "symbols": [
+            "assert"
+          ]
+        },
+        {
+          "source": "node:test",
+          "symbols": [
+            "test"
+          ]
+        }
+      ],
+      "symbols": [
+        {
+          "location": {
+            "end": 77,
+            "start": 77
+          },
+          "name": "fileKeys",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 54,
+            "start": 54
+          },
+          "name": "jsonStr1",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 55,
+            "start": 55
+          },
+          "name": "jsonStr2",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 60,
+            "start": 60
+          },
+          "name": "parsed",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 63,
+            "start": 63
+          },
+          "name": "rootKeys",
+          "type": "variable"
+        },
+        {
+          "location": {
+            "end": 52,
+            "start": 7
+          },
+          "name": "unsortedData",
+          "type": "variable"
+        }
+      ]
+    }
+  },
+  "internalLinks": {
+    "src/index.ts:createCodemap": [
+      "tests/integration.test.ts"
+    ],
+    "src/parser.ts:CodebaseParser": [
+      "src/index.ts"
+    ],
+    "src/parser.ts:parsePackageDependencies": [
+      "src/index.ts",
+      "tests/package-parser.test.ts"
+    ],
+    "src/parsers/csharp.ts:CSharpParser": [
+      "src/parser.ts",
+      "tests/parsers.test.ts"
+    ],
+    "src/parsers/go.ts:GoParser": [
+      "src/parser.ts",
+      "tests/parsers.test.ts"
+    ],
+    "src/parsers/java.ts:JavaParser": [
+      "src/parser.ts",
+      "tests/parsers.test.ts"
+    ],
+    "src/parsers/python.ts:PythonParser": [
+      "src/parser.ts",
+      "tests/parsers.test.ts"
+    ],
+    "src/parsers/typescript.ts:TypeScriptParser": [
+      "src/parser.ts",
+      "tests/parsers.test.ts"
+    ],
+    "src/resolver.ts:resolveImports": [
+      "src/index.ts",
+      "tests/resolver.test.ts"
+    ],
+    "src/scanner.ts:scanDirectory": [
+      "src/index.ts",
+      "tests/scanner.test.ts"
+    ],
+    "src/types.ts:CodemapSchema": [
+      "src/index.ts",
+      "src/writer.ts",
+      "tests/writer.test.ts"
+    ],
+    "src/types.ts:FileEntry": [
+      "src/index.ts",
+      "src/resolver.ts",
+      "src/writer.ts",
+      "tests/resolver.test.ts"
+    ],
+    "src/types.ts:ImportEntry": [
+      "src/parsers/csharp.ts",
+      "src/parsers/go.ts",
+      "src/parsers/java.ts",
+      "src/parsers/python.ts",
+      "src/parsers/typescript.ts"
+    ],
+    "src/types.ts:LanguageParser": [
+      "src/parser.ts",
+      "src/parsers/csharp.ts",
+      "src/parsers/go.ts",
+      "src/parsers/java.ts",
+      "src/parsers/python.ts",
+      "src/parsers/typescript.ts"
+    ],
+    "src/types.ts:NamespaceEntry": [
+      "src/index.ts",
+      "src/resolver.ts",
+      "src/writer.ts",
+      "tests/resolver.test.ts"
+    ],
+    "src/types.ts:PackageDependencies": [
+      "src/parser.ts",
+      "src/resolver.ts",
+      "tests/resolver.test.ts"
+    ],
+    "src/types.ts:ParseResult": [
+      "src/parser.ts",
+      "src/parsers/csharp.ts",
+      "src/parsers/go.ts",
+      "src/parsers/java.ts",
+      "src/parsers/python.ts",
+      "src/parsers/typescript.ts"
+    ],
+    "src/types.ts:SymbolEntry": [
+      "src/parsers/csharp.ts",
+      "src/parsers/go.ts",
+      "src/parsers/java.ts",
+      "src/parsers/python.ts",
+      "src/parsers/typescript.ts"
+    ],
+    "src/utils/wasm-loader.ts:getWasmPath": [
+      "src/parser.ts",
+      "tests/parsers.test.ts",
+      "tests/wasm-loader.test.ts"
+    ],
+    "src/writer.ts:generateDeterministicJson": [
+      "src/index.ts",
+      "tests/writer.test.ts"
+    ]
+  },
+  "namespaces": {},
+  "packageDependencies": {
+    "npm": {
+      "@types/node": "^20.11.0",
+      "tree-sitter-wasms": "^0.1.11",
+      "typescript": "^5.3.3",
+      "web-tree-sitter": "^0.22.4"
+    }
+  },
+  "project": {
+    "languages": [
+      "typescript"
+    ],
+    "name": "bold-hypatia",
+    "root": "."
+  },
+  "version": "1.0.0"
+}

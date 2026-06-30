@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CodemapSchema",
+  "type": "object",
+  "properties": {
+    "version": { "type": "string" },
+    "$schema": { "type": "string" },
+    "project": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "languages": { "type": "array", "items": { "type": "string" } },
+        "root": { "type": "string" }
+      },
+      "required": ["name", "languages", "root"],
+      "additionalProperties": false
+    },
+    "packageDependencies": {
+      "type": "object",
+      "properties": {
+        "npm": { "type": "object", "additionalProperties": { "type": "string" } },
+        "nuget": { "type": "object", "additionalProperties": { "type": "string" } },
+        "go": { "type": "object", "additionalProperties": { "type": "string" } },
+        "maven": { "type": "object", "additionalProperties": { "type": "string" } },
+        "pip": { "type": "object", "additionalProperties": { "type": "string" } }
+      },
+      "additionalProperties": false
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "hash": { "type": "string" },
+          "imports": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": { "type": "string" },
+                "symbols": { "type": "array", "items": { "type": "string" } }
+              },
+              "required": ["source", "symbols"],
+              "additionalProperties": false
+            }
+          },
+          "exports": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/SymbolEntry" }
+          },
+          "symbols": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/SymbolEntry" }
+          }
+        },
+        "required": ["hash", "imports", "exports", "symbols"],
+        "additionalProperties": false
+      }
+    },
+    "namespaces": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "files": { "type": "array", "items": { "type": "string" } },
+          "exports": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["files", "exports"],
+        "additionalProperties": false
+      }
+    },
+    "externalImports": {
+      "type": "object",
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    },
+    "internalLinks": {
+      "type": "object",
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    }
+  },
+  "required": [
+    "version",
+    "project",
+    "packageDependencies",
+    "files",
+    "namespaces",
+    "externalImports",
+    "internalLinks"
+  ],
+  "definitions": {
+    "SymbolEntry": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "type": {
+          "type": "string",
+          "enum": ["class", "interface", "struct", "method", "function", "variable", "type"]
+        },
+        "location": {
+          "type": "string"
+        },
+        "doc": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "type", "location"],
+      "additionalProperties": false
+    }
+  }
+}

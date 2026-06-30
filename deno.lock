@@ -1,0 +1,41 @@
+{
+  "version": "5",
+  "specifiers": {
+    "npm:@types/node@^20.11.0": "20.19.43",
+    "npm:tree-sitter-wasms@~0.1.11": "0.1.13",
+    "npm:typescript@^5.3.3": "5.9.3",
+    "npm:web-tree-sitter@~0.22.4": "0.22.6"
+  },
+  "npm": {
+    "@types/node@20.19.43": {
+      "integrity": "sha512-6oYBAi5ikg4Pl+kGsoYtawUMBT2zZMCvPNF7pVLnHZfd1zf38DRiWn/gT01RYCdUqkv7Fhr+C9ot4/tb+2sVvA==",
+      "dependencies": [
+        "undici-types"
+      ]
+    },
+    "tree-sitter-wasms@0.1.13": {
+      "integrity": "sha512-wT+cR6DwaIz80/vho3AvSF0N4txuNx/5bcRKoXouOfClpxh/qqrF4URNLQXbbt8MaAxeksZcZd1j8gcGjc+QxQ=="
+    },
+    "typescript@5.9.3": {
+      "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+      "bin": true
+    },
+    "undici-types@6.21.0": {
+      "integrity": "sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ=="
+    },
+    "web-tree-sitter@0.22.6": {
+      "integrity": "sha512-hS87TH71Zd6mGAmYCvlgxeGDjqd9GTeqXNqTT+u0Gs51uIozNIaaq/kUAbV/Zf56jb2ZOyG8BxZs2GG9wbLi6Q=="
+    }
+  },
+  "workspace": {
+    "packageJson": {
+      "dependencies": [
+        "npm:@types/node@^20.11.0",
+        "npm:tree-sitter-wasms@~0.1.11",
+        "npm:typescript@^5.3.3",
+        "npm:web-tree-sitter@~0.22.4",
+        "npm:yaml@^2.4.5"
+      ]
+    }
+  }
+}
