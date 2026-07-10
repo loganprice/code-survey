@@ -1,6 +1,6 @@
 {
   "name": "code-survey",
-  "version": "1.0.0",
+  "version": "1.0.1-rc1",
   "description": "Deterministic codebase surveying tool for coding agents",
   "main": "dist/index.js",
   "type": "module",
