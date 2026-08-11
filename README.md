@@ -14,7 +14,7 @@ By default, Code Survey generates a token-optimized representation of the codeba
 - **Compacted Line Locations:** Encodes coordinates into a compact `"Ln X-Y"` format to save character space.
 - **Deterministic Output:** Recursively sorts files, namespaces, imports, and exports alphabetically, keeping git diffs clean and maximizing LLM context-cache hit rates.
 - **Git-Delta Maps:** Map only the files that have changed in git (committed since a branch/hash, or uncommitted changes).
-- **Traversal Depth Limits:** Traversal depth restriction for scaling up to large repositories or monorepos.
+- **Traversal Depth Limits:** Traversal depth restriction for scaling up to large repositories or monorepos.    
 
 ---
 
